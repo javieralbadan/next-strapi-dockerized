@@ -12,3 +12,5 @@ services:
         environment:
             - NODE_ENV=development
             - WATCHPACK_POLLING=true
+            - NEXT_PUBLIC_STRAPI_API_URL=http://localhost:1337
+            - DOCKER_PUBLIC_STRAPI_API_URL=http://host.docker.internal:1337

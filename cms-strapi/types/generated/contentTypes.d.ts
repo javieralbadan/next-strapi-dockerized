@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiClientLogoClientLogo extends Struct.CollectionTypeSchema {
   collectionName: 'client_logos';
   info: {
+    description: '';
     displayName: 'ClientLogos';
     pluralName: 'client-logos';
     singularName: 'client-logo';
@@ -393,7 +394,7 @@ export interface ApiClientLogoClientLogo extends Struct.CollectionTypeSchema {
       'api::client-logo.client-logo'
     > &
       Schema.Attribute.Private;
-    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+    Logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
