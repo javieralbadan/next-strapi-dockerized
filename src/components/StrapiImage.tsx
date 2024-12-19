@@ -6,7 +6,7 @@ interface Props extends Omit<ImageProps, 'src'> {
 }
 
 const StrapiImage = ({ src, alt, ...props }: Props) => {
-  const STRAPI_URL = process.env.DOCKER_PUBLIC_STRAPI_API_URL || "http://host.docker.internal:1337";
+  const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_UPLOADS_URL;
   const imageUrl = src.startsWith("/") ? `${STRAPI_URL}${src}` : src;
 
   return (

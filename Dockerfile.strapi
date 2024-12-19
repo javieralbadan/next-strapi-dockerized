@@ -1,0 +1,22 @@
+FROM node:22 AS build
+
+WORKDIR /srv/app
+
+COPY ./cms-strapi/package*.json ./
+RUN npm install
+
+COPY ./cms-strapi .
+
+FROM node:22 AS runtime
+
+WORKDIR /srv/app
+
+COPY --from=build /srv/app/package*.json ./
+COPY --from=build /srv/app/node_modules ./node_modules
+COPY --from=build /srv/app ./
+
+ENV NODE_ENV development
+
+EXPOSE 1337
+
+CMD [ "npm", "run", "dev" ]

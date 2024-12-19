@@ -4,4 +4,5 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  url: env('NEXT_PUBLIC_STRAPI_API_URL', 'http://localhost:1337'),
 });
