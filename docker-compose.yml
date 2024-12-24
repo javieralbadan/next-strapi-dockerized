@@ -38,7 +38,7 @@ services:
         environment:
             - NODE_ENV=development
             - WATCHPACK_POLLING=true
-            - NEXT_PUBLIC_STRAPI_API_URL=http://localhost:1337
-            - NEXT_PUBLIC_STRAPI_UPLOADS_URL=http://strapi:1337
+            - NEXT_PUBLIC_STRAPI_CLIENT_URL=http://localhost:1337
+            - NEXT_PUBLIC_STRAPI_SERVER_URL=http://strapi:1337
         depends_on:
             - strapi
