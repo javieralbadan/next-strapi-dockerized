@@ -1,10 +1,10 @@
 const DEFAULT_LOCALE = process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'en';
-const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_CLIENT_URL;
-const ENDPOINT = '/api/client-logos';
+const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_SERVER_URL;
+const ENDPOINT = '/api/nav-items';
 
-export async function getClientLogos(lang: string = DEFAULT_LOCALE) {
+export async function getNavItems(lang: string = DEFAULT_LOCALE) {
   try {
-    const response = await fetch(`${BASE_URL}${ENDPOINT}?locale=${lang}&populate=*`);
+    const response = await fetch(`${BASE_URL}${ENDPOINT}?locale=${lang}&populate=navSubItems`);
     if (!response.ok) {
       throw new Error(`Error fetching ${ENDPOINT}: ${response.statusText}`);
     }

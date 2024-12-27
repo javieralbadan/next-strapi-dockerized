@@ -2,14 +2,26 @@
 
 import { ClientLogo } from '@/types/ClientLogo';
 import { CContainer } from '@coreui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import StrapiImage from './StrapiImage';
+import { getClientLogos } from '@/api/clientLogos';
 
-interface Props {
-	logos: ClientLogo[];
-}
+const ClientLogos = ({ lang }: { lang: string }) => {
+  const [logos, setLogos] = useState<ClientLogo[] | []>([]);
 
-const ClientLogos: React.FC<Props> = ({ logos }) => {
+  useEffect(() => {
+    const fecthLogos = async () => {
+      try {
+        const data = await getClientLogos(lang);
+        setLogos(data);
+      } catch (error) {
+        console.log('🚀 ~ fecthLogos ~ error:', error);
+      }
+    }
+
+    fecthLogos();
+  }, []);
+
 	return (
 		<CContainer className="d-flex gap-4 overflow-auto p-4 justify-content-center">
 			{logos.map((item) => (
@@ -22,7 +34,7 @@ const ClientLogos: React.FC<Props> = ({ logos }) => {
 						src={item.Logo.url}
 						alt={item.ClientName}
 						width={150}
-						height={150}
+						height={100}
 						className="img-fluid"
 					/>
 				</div>

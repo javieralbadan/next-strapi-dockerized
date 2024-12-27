@@ -4,7 +4,7 @@ import { getLocales } from './api/locales';
 
 export async function middleware(request: NextRequest) {
   const availableLocales = await getLocales();
-  const defaultLocale = availableLocales.find(({ isDefault }) => isDefault);
+  const defaultLocale = availableLocales.find(({ isDefault }: { isDefault: string }) => isDefault);
 
   const url = request.nextUrl.clone();
   const pathSegments = url.pathname.split('/').filter(Boolean);
